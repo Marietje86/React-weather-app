@@ -13,7 +13,7 @@ export default function Weather() {
     temperature: 23,
     feels_like: 25,
     max_temp: 26,
-    min_temp: 20,
+    min_temp: 21,
     humidity: 72,
     wind: 3
   };
