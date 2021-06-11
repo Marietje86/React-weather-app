@@ -34,6 +34,7 @@ export default function Weather() {
           <div className="location">
             {weatherData.city}, {weatherData.country}
           </div>
+          <br />
           <div className="date-and-time">
             Last updated: {weatherData.date}, {weatherData.time}
           </div>

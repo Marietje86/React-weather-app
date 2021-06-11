@@ -13,6 +13,7 @@ export default function Search() {
               id="input-search"
             />
           </div>
+          <br />
           <div className="col-3">
             <input
               type="submit"
