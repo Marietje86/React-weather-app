@@ -74,6 +74,7 @@ export default function Weather() {
         {/*   **********  Coded By  **********  */}
         <div className="row">
           <div className="col-md-6 coded-by">
+          <footer>
             <small>
               {" "}
               Open-sourced on{" "}
@@ -85,7 +86,7 @@ export default function Weather() {
                 Github
               </a>
             </small>
-            <footer>
+        
               Weather engine brought to you by{" "}
               <a
                 href="https://www.linkedin.com/in/mariette-everitz"
