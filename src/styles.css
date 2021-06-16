@@ -39,7 +39,7 @@ body {
     #fbf5b7,
     #aa771c
   );
-  background-size: 100%;
+  background-size: 50%;
   -webkit-text-stroke: 0.5px #797675;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
@@ -49,6 +49,10 @@ body {
   padding-top: 10px;
   padding: 5px;
   margin: 0 auto;
+}
+
+.Weather .location-icon {
+  fill: url(#my-gold-gradient-1);
 }
 
 .col-4 {
