@@ -50,11 +50,6 @@ body {
   padding: 5px;
   margin: 0 auto;
 }
-.Weather .location-icon {
-  fill: url(#my-gold-gradient-1);
-  padding: 5px;
-  margin: 0 auto;
-}
 
 .col-4 {
   text-align: right;
