@@ -104,7 +104,7 @@ h3 {
 }
 
 #button-search {
-  margin: -40px;
+  margin: -40px 0;
   display: block;
   color: rgba(87, 93, 187, 0.897);
   background: #f7f5f1;
