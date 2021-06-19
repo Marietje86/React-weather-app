@@ -5,31 +5,34 @@ import Search from "./Search";
 {
   /*   ******  Temperature ******  */
 }
-export default function Weather() {
+export default function Weather(props) {
   const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
-    setTemperature(response.data.main.temp);
+    console.log(response.data);
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+      city: response.data.name,
+      country: response.data.sys.country,
+      date: "Thur, May 5",
+      time: "15:00",
+      description: response.data.weather[0].description,
+      imgUrl: "http://openweathermap.org/img/wn/01d@2x.png",
+      feels_like: response.data.main.feels_like,
+      max_temp: response.data.main.temp_max,
+      min_temp: response.data.main.temp_min,
+    });
+     
+    setReady(true);
   }
-  let weatherData = {
-    city: "Barcelona",
-    country: "Spain",
-    date: "Thur, May 5",
-    time: "15:00",
-    description: "Sunny",
-    imgUrl: "http://openweathermap.org/img/wn/01d@2x.png",
-    temperature: 23,
-    feels_like: 25,
-    max_temp: 26,
-    min_temp: 21,
-    humidity: 72,
-    wind: 3,
-  };
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="Weather">
-        <div class="container">
-          <div class="row"></div>
+        <div className="container">
+          <div className="row"></div>
         </div>
         <h1>
           <span>😎</span>What weather you can expect<span>🤔</span>
@@ -47,17 +50,18 @@ export default function Weather() {
               Last updated: {weatherData.date}, {weatherData.time}
             </div>
           </div>
-          <h2 id="temperature">
+          <h2 id="temperature">{Math.round(weatherData.temperature)}°C
             <a href="#" id="celsius"></a>
           </h2>
-          <div class="clearfix">
-            <h3 id="show-city">Cloudy</h3>
-            <div className="description"></div>
+          <div className="clearfix">
+            <h3 id="show-city"></h3>
+            <div className="text-capitalize">{weatherData.description}</div>
+            <br />
             <img
-              src="http://openweathermap.org/img/wn/04d@2x.png"
-              alt="clear"
+              src={weatherData.imgUrl}
+              alt={weatherData.description}
               id="icon"
-              class="float-left"
+              className="float-left"
               width="60"
             />
             <br />
@@ -65,13 +69,13 @@ export default function Weather() {
           <br />
           <ul>
             <div className="weather-app-wrapper">
-              <li className="col-3">Feels like: {weatherData.feels_like}°C</li>
+              <li className="col-3">Feels like: {Math.round(weatherData.feels_like)}°C</li>
               <li className="col-3">
-                H/L: <span className="high-temp">{weatherData.max_temp}</span>°C
-                <span className="low-temp"> {weatherData.min_temp}</span>°C
+                H/L: <span className="high-temp">{Math.round(weatherData.max_temp)}</span>°C
+                <span className="low-temp"> {Math.round(weatherData.min_temp)}</span>°C
               </li>
-              <li className="col-3">Humidity: {weatherData.humidity}%</li>
-              <li className="col-3">Winds: {weatherData.wind} km/h</li>
+              <li className="col-3">Humidity: {Math.round(weatherData.humidity)}%</li>
+              <li className="col-3">Winds: {Math.round(weatherData.wind)} km/h</li>
             </div>
           </ul>
           <br />
@@ -108,8 +112,7 @@ export default function Weather() {
     );
   } else {
     let apiKey = "ce4afc8744a0f1fef5bae5142b3fbd94";
-    let city = "Valencia";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
     return "Load";
   }
