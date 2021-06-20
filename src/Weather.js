@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
 import "./styles.css";
 import Search from "./Search";
@@ -17,7 +18,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       city: response.data.name,
       country: response.data.sys.country,
-      date: "Thur, May 5",
+      date: new Date(response.data.dt * 1000),
       time: "15:00",
       description: response.data.weather[0].description,
       imgUrl: "http://openweathermap.org/img/wn/01d@2x.png",
@@ -47,7 +48,7 @@ export default function Weather(props) {
             </div>
             <br />
             <div className="date-and-time">
-              Last updated: {weatherData.date}, {weatherData.time}
+              Last updated: <FormattedDate date={weatherData.date.getDay()} />
             </div>
           </div>
           <h2 id="temperature">{Math.round(weatherData.temperature)}°C
