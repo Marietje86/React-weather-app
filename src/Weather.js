@@ -48,7 +48,7 @@ export default function Weather(props) {
             </div>
             <br />
             <div className="date-and-time">
-              Last updated: <FormattedDate date={weatherData.date.getDay()} />
+              Last updated: <FormattedDate date={weatherData.date} />
             </div>
           </div>
           <h2 id="temperature">{Math.round(weatherData.temperature)}°C
