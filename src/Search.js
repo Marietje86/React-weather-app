@@ -3,9 +3,16 @@ import React, { useState } from "react";
 
 export default function Search(props) {
 const [city, setCity] = useState(props.defaultCity); 
+
+function search() {
+  const apiKey = "ce4afc8744a0f1fef5bae5142b3fbd94";
+  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(handleResponse);
+}
+
   function handleSubmit(event) {
     event.preventDefault();
-    //search city//
+   search();
   }
 
   function handleCityChange(event){
