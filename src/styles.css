@@ -131,7 +131,9 @@ ul {
 
 #icon {
   margin: 0 auto;
-  display: block;
+  margin-top: 2px;
+  margin-bottom: 30px;
+  display: inline;
 }
 
 .date-and-time {

@@ -20,7 +20,7 @@ export default function Weather(props) {
       country: response.data.sys.country,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      imgUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       feels_like: response.data.main.feels_like,
       max_temp: response.data.main.temp_max,
       min_temp: response.data.main.temp_min,
