@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./styles.css";
-import Search from "./Search";
+
 {
   /*   ******  Temperature ******  */
 }
 export default function Weather(props) {
   const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity); 
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -27,6 +28,22 @@ export default function Weather(props) {
      
     setReady(true);
   }
+
+  function search() {
+    const apiKey = "ce4afc8744a0f1fef5bae5142b3fbd94";
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+   search();
+  }
+
+  function handleCityChange(event){
+setCity(event.target.value);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="Weather">
@@ -37,7 +54,30 @@ export default function Weather(props) {
           <span>😎</span>What weather you can expect<span>🤔</span>
         </h1>
         {/*   ******  Search ******  */}
-        <Search />
+        <div className="container">
+      <form onSubmit={handleSubmit} className="search" id="city-search">
+        <div className="row">
+          <div className="offset-3 col-2">
+            <input
+              type="search"
+              placeholder="Search by city 🔍"
+              autoFocus="on"
+              id="input-search"
+              onChange={handleCityChange}
+            />
+          </div>
+          <br />
+          <div className="col-3">
+            <input
+              type="submit"
+              value="search 🌍"
+              id="button-search"
+              className="btn btn-primary"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
         <br />
         <WeatherInfo data={weatherData} />
           <br />
@@ -72,7 +112,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-   Search();
+   search();
     return "Load";
   }
 }
