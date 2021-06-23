@@ -129,6 +129,14 @@ ul {
   padding: 0;
 }
 
+#celsius {
+  font-size: 20px;
+}
+
+#fahrenheit {
+  font-size: 20px;
+}
+
 #icon {
   margin: 0 auto;
   margin-top: 2px;
