@@ -91,7 +91,7 @@ setCity(event.target.value);
                   {" "}
                   Open-sourced on{" "}
                   <a
-                    href="https://github.com/Marietje86/Mariette-e-weather-app"
+                    href="https://github.com/Marietje86/React-weather-app"
                     target="_blank"
                   >
                     {" "}
