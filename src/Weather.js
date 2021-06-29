@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import "./styles.css";
 
@@ -82,6 +83,7 @@ setCity(event.target.value);
         <WeatherInfo data={weatherData} />
           <br />
           {/*   **********  Weather Forecast  **********  */}
+          <WeatherForecast />
           <div className="row weather-forecast"></div>
           {/*   **********  Coded By  **********  */}
           <div className="row">

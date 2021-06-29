@@ -12,7 +12,7 @@ export default function WeatherInfo(props) {
           </div>
           <div className="d-flex justify-content-center align-items-end">
             <div className="weather-icon-description">
-              <WeatherIcon code={props.data.icon} />
+              <WeatherIcon code={props.data.icon} size={52} />
               <div className="text-capitalize">{props.data.description}</div>
             </div>
             <div className="weather-info">
