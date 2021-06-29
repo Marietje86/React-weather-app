@@ -2,48 +2,50 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
-
 export default function WeatherInfo(props) {
-    return ( 
-        <div className="WeatherInfo">
-    <div className="row justify-content-between current-weather-conditions">
-    <div className="col-6">
-      <div className="location">
-        {props.data.city}, {props.data.country}
+  return (
+    <div className="WeatherInfo">
+      <div className="row justify-content-between current-weather-conditions mb-4">
+        <div className="col">
+          <div className="location">
+            {props.data.city}, {props.data.country}
+          </div>
+          <div className="d-flex justify-content-center align-items-end">
+            <div className="weather-icon-description">
+              <WeatherIcon code={props.data.icon} />
+              <div className="text-capitalize">{props.data.description}</div>
+            </div>
+            <div className="weather-info">
+              <div className="date-and-time">
+                Last updated: <FormattedDate date={props.data.date} />
+              </div>
+              <WeatherTemperature celsius={props.data.temperature} />
+            </div>
+          </div>
+        </div>
       </div>
-      <br />
-      <div className="date-and-time">
-        Last updated: <FormattedDate date={props.data.date} />
+      <div className="row text-center">
+        <div className="col">
+          <div className="row weather-app-wrapper">
+            <div className="col"></div>
+            <p>Feels like: {Math.round(props.data.feels_like)}°C</p>
+            <p>
+              H/L:{" "}
+              <span className="high-temp">
+                {Math.round(props.data.max_temp)}
+              </span>
+              °C
+              <span className="low-temp">
+                {" "}
+                {Math.round(props.data.min_temp)}
+              </span>
+              °C
+            </p>
+            <p>Humidity: {Math.round(props.data.humidity)}%</p>
+            <p>Winds: {Math.round(props.data.wind)} km/h</p>
+          </div>
+        </div>
       </div>
     </div>
-    <WeatherTemperature celsius={props.data.temperature} />
-    <div className="clearfix">
-      <h3 id="show-city"></h3>
-      <div className="text-capitalize">{props.data.description}</div>
-      <br />
-      <div className="row mt-3">
-      <div className="col-5">
-      <div className="clearfix">  
-      <div className="float-left">  
-      <WeatherIcon code={props.data.icon} />
-      </div>
-      </div>
-      </div>
-      </div>
-    </div>
-    <br />
-    <ul>
-      <div className="weather-app-wrapper">
-        <li className="col-3">Feels like: {Math.round(props.data.feels_like)}°C</li>
-        <li className="col-3">
-          H/L: <span className="high-temp">{Math.round(props.data.max_temp)}</span>°C
-          <span className="low-temp"> {Math.round(props.data.min_temp)}</span>°C
-        </li>
-        <li className="col-3">Humidity: {Math.round(props.data.humidity)}%</li>
-        <li className="col-3">Winds: {Math.round(props.data.wind)} km/h</li>
-      </div>
-    </ul>
-    </div>
-    </div>
-    );
+  );
 }

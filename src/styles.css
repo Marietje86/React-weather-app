@@ -57,6 +57,9 @@ body {
   fill: url(#my-gold-gradient-1);
 }
 
+.location {
+  text-align: center;
+}
 
 .col-4 {
   text-align: right;
@@ -180,19 +183,20 @@ ul {
 }
 
 .weather-app-wrapper {
-  list-style: none;
   color: rgb(71, 61, 14);
-  right: 0;
-  left: 0;
   font-size: 15px;
-  margin: -55px auto;
-  display: block;
-  width: 30%;
-  position: absolute;
+  text-align: center;
+}
+
+.weather-app-wrapper ul {
+  list-style: none;
+  padding: 0;
 }
 
 footer {
   color: rgb(9, 29, 39);
   font-size: small;
   text-align: right;
+  margin-right: -80px;
+  margin-left: 10px;
 }
