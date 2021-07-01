@@ -53,7 +53,7 @@ setCity(event.target.value);
           <div className="row"></div>
         </div>
         <h1>
-          <span>😎</span>What weather you can expect<span>🤔</span>
+          <span>☀️</span>What weather you can expect<span>❄️</span>
         </h1>
         {/*   ******  Search ******  */}
         <div className="container">
